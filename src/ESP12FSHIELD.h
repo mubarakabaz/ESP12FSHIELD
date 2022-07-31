@@ -87,5 +87,22 @@ void terimaDataHttp2(char *nama_server, String nama_path, int nomor_port){
   }
 }
 
+void httpPOST(char* SERVER, char* API_KEY, String KONTEN, int JUMLAH_KONTEN, int PORT){
+  // jika wifi tidak terhubung ke server
+  if(WiFi.status() != WL_CONNECTED){
+    Serial.print("Menghubungkan ke Jaringan SSID: ");
+    Serial.println(SSID);
+    while(WiFi.status() != WL_CONNECTED){
+      WiFi.begin(SSID, PASS);
+      Serial.print(".");
+      delay(500);
+    }
+    printStatusWiFi();
+    Serial.println("Berhasil terhubung ke Jaringan");
+  }
+
+  // jika wifi berhasil terhubung ke server
+  ...
+}
 
 
