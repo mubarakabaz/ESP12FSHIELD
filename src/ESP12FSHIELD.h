@@ -134,4 +134,31 @@ void httpPOST(char* SERVER, char* API_KEY, String KONTEN, int JUMLAH_KONTEN, int
   }
 }
 
+void setWifi(char *ssid_wifi, char *katasandi_wifi){
+  SSID = ssid_wifi;
+  PASS = katasandi_ssid;
+  
+  Serial1.begin(115200);
+  Serial1.println("AT+UART_DEF=9600,8,1,0,0");
+  delay(500);
+  
+  Serial1.begin(9600);
+  WiFi.init(&Serial1);
+
+  if(WiFi.status() == WL_NO_SHIELD){
+    Serial.println("Modul WiFi atau Shield Tidak Terdeteksi");
+    while(true);
+  }
+  while(status != WL_CONNECTED){
+    Serial.print("Mencoba terhubung ke SSID: ");
+    Serial.println(ssid_wifi);
+    status = WiFi.begin(ssid_wifi, katasandi_wifi);
+  }
+  
+  Serial.print(" Berhasil terhubung ke: ");
+  Serial.print(ssid_wifi);
+
+  printStatusWifi()
+}
+
 
