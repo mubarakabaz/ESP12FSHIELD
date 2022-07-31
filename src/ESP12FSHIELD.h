@@ -102,7 +102,36 @@ void httpPOST(char* SERVER, char* API_KEY, String KONTEN, int JUMLAH_KONTEN, int
   }
 
   // jika wifi berhasil terhubung ke server
-  ...
+  if(WiFi.status() == WL_CONNECTED){
+    Serial.println();
+    Serial.println("Mencoba menghubungkan ke server ...");
+    if(client.connect(SERVER, PORT)){
+      Serial.println();
+      Serial.println("Berhasil Terhubung ke Server.");
+
+      char contents[JUMLAH_KONTEN];
+      KONTEN.toCharArray(contents, JUMLAH_KONTEN);
+
+      client.println("POST /update HTTP/1.1");
+      client.print("Host: ");
+      client.println(SERVER);
+      client.println("User-Agent: tslib-arduino/1.5.0");
+      client.print("X-THINGSPEAKAPIKEY: ");
+      client.print(API_KEY);
+      client.println("Content-Type: application/x-www-form-urlencoded");
+      client.println("Content-Length: ");
+      client.println(strlen(contents));
+      client.println("Connection: close");
+      client.println();
+
+      client.print(KONTEN);
+
+      char endOfHeaders[] = "\r\n\r\n";
+      client.find(endOfHeaders);
+      terimaData = client.readString();
+      terimaData.trim();
+    }
+  }
 }
 
 
