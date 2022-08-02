@@ -1,0 +1,7 @@
+ESP12FSHIELD KEYWORD1
+setWifi KEYWORD1
+terimaDataHttp KEYWORD1
+terimaDataHttp2 KEYWORD1
+terimaData KEYWORD1
+httpPOST KEYWORD1
+statusKomunikasiWifi KEYWORD1
