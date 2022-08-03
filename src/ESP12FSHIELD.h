@@ -158,7 +158,7 @@ void setWifi(char *ssid_wifi, char *katasandi_wifi){
   Serial.print(" Berhasil terhubung ke: ");
   Serial.print(ssid_wifi);
 
-  printStatusWifi();
+  printStatusWiFi();
 }
 
 
