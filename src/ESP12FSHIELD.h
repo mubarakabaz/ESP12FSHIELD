@@ -136,7 +136,7 @@ void httpPOST(char* SERVER, char* API_KEY, String KONTEN, int JUMLAH_KONTEN, int
 
 void setWifi(char *ssid_wifi, char *katasandi_wifi){
   SSID = ssid_wifi;
-  PASS = katasandi_ssid;
+  PASS = katasandi_wifi;
   
   Serial1.begin(115200);
   Serial1.println("AT+UART_DEF=9600,8,1,0,0");
@@ -158,7 +158,7 @@ void setWifi(char *ssid_wifi, char *katasandi_wifi){
   Serial.print(" Berhasil terhubung ke: ");
   Serial.print(ssid_wifi);
 
-  printStatusWifi()
+  printStatusWifi();
 }
 
 
